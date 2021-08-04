@@ -85,4 +85,12 @@ class StringCalculatorTest {
         Assertions.assertEquals("Negative number(s) [-1, -1] are not supported", ex.getMessage());
     }
 
+    @Test
+    void givenOperations_whenGetAddCount_thenCount() {
+        stringCalculator = new StringCalculator();
+        stringCalculator.add("1");
+        stringCalculator.add("1,2");
+        Assertions.assertEquals(2, stringCalculator.getCount());
+    }
+
 }
