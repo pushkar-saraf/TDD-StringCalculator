@@ -93,4 +93,9 @@ class StringCalculatorTest {
         Assertions.assertEquals(2, stringCalculator.getCount());
     }
 
+    @Test
+    void givenLargeNumbers_whenAdd_thenIgnored() {
+        Assertions.assertEquals(2, stringCalculator.add("1001,2"));
+    }
+
 }
