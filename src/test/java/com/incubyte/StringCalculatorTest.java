@@ -79,4 +79,10 @@ class StringCalculatorTest {
         Assertions.assertEquals("Negative number(s) [-1] are not supported", ex.getMessage());
     }
 
+    @Test
+    void givenNegativeNumbers_whenAdd_thenNotSupported(){
+        UnsupportedOperationException ex = Assertions.assertThrows(UnsupportedOperationException.class,() -> stringCalculator.add("-1,0,-1"));
+        Assertions.assertEquals("Negative number(s) [-1, -1] are not supported", ex.getMessage());
+    }
+
 }
