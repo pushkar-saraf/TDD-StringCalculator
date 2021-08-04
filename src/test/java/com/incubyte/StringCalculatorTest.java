@@ -41,7 +41,19 @@ class StringCalculatorTest {
     void givenTwoNumbers_wheAdd_thenSum() {
         Assertions.assertEquals(
                 3,
-                stringCalculator.add("1, 2")
+                stringCalculator.add("1,2")
+        );
+    }
+
+    @Test
+    void givenMultipleNumbers_whenAdd_thenSum(){
+        Assertions.assertEquals(
+                6,
+                stringCalculator.add("1,2,3")
+        );
+        Assertions.assertEquals(
+                6,
+                stringCalculator.add("0,1,2,3")
         );
     }
 
