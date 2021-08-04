@@ -36,7 +36,11 @@ public class StringUtils {
     }
 
     private static ParsedInput parseInputString(String input) {
-        return null;
+        if(!input.startsWith("//")){
+            return ParsedInput.of("[,\n]", input);
+        }
+        String[] parts = input.split("\n");
+        return ParsedInput.of( parts[0].substring(2), parts[1]);
     }
 
     /**
