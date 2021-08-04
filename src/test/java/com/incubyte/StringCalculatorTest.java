@@ -57,4 +57,12 @@ class StringCalculatorTest {
         );
     }
 
+    @Test
+    void givenNumbersInNewLine_whenAdd_thenSum(){
+        Assertions.assertEquals(
+                6,
+                stringCalculator.add("1\n2,3")
+        );
+    }
+
 }
