@@ -5,6 +5,9 @@ import lombok.NoArgsConstructor;
 
 import java.util.Arrays;
 
+/**
+ * Class for utility methods to parse strings
+ */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class StringUtils {
 
@@ -37,6 +40,12 @@ public class StringUtils {
         return numbers;
     }
 
+    /**
+     * Method to parse an input string for delimiter and numbers
+     *
+     * @param input input string
+     * @return ParsedInput
+     */
     private static ParsedInput parseInputString(String input) {
         if (!input.startsWith("//")) {
             return ParsedInput.of("[,\n]", input);
@@ -46,6 +55,12 @@ public class StringUtils {
         return ParsedInput.of(delimiters, parts[1]);
     }
 
+    /**
+     * Method to get a regexp of delimiters
+     *
+     * @param input delimiters in [...][...] format
+     * @return delimiters in regexp separated by '|' operator
+     */
     private static String getDelimiters(String input) {
         String[] delimiters = input.split("]");
         return Arrays.stream(delimiters).map(str -> str.substring(1))
@@ -53,10 +68,16 @@ public class StringUtils {
                 .reduce("", (s1, s2) -> s1 + "|" + s2);
     }
 
+    /**
+     * Sanitize string for special caracters
+     *
+     * @param str input
+     * @return sanitized output
+     */
     private static String sanitize(String str) {
         StringBuilder sb = new StringBuilder();
-        for(char c: str.toCharArray()) {
-            if(c == '*') {
+        for (char c : str.toCharArray()) {
+            if (c == '*') {
                 sb.append("\\");
             }
             sb.append(c);
