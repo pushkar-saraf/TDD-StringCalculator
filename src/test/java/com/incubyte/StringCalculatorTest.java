@@ -37,4 +37,12 @@ class StringCalculatorTest {
         );
     }
 
+    @Test
+    void givenTwoNumbers_wheAdd_thenSum() {
+        Assertions.assertEquals(
+                3,
+                stringCalculator.add("1, 2")
+        );
+    }
+
 }
