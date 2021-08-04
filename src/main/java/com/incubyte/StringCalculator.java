@@ -1,8 +1,13 @@
 package com.incubyte;
 
+import lombok.Getter;
+
 import java.util.Arrays;
 
+@Getter
 class StringCalculator {
+
+    private int count = 0;
 
     /**
      * Method used to add numbers
@@ -14,7 +19,12 @@ class StringCalculator {
         if (StringUtils.isEmpty(numbers)) {
             return 0;
         }
+        incrementCount();
         return sum(StringUtils.getNumbers(numbers));
+    }
+
+    private void incrementCount() {
+        count += 1;
     }
 
     /**
