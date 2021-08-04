@@ -65,4 +65,12 @@ class StringCalculatorTest {
         );
     }
 
+    @Test
+    void givenDelimiterAndNumbers_whenAdd_thenSum(){
+        Assertions.assertEquals(
+                3,
+                stringCalculator.add("//;\n1;2")
+        );
+    }
+
 }
