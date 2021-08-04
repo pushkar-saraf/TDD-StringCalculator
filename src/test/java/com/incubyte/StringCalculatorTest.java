@@ -29,4 +29,12 @@ class StringCalculatorTest {
         );
     }
 
+    @Test
+    void givenSingleNumber_whenAdd_thenNumber(){
+        Assertions.assertEquals(
+                1,
+                stringCalculator.add("1")
+        );
+    }
+
 }
