@@ -14,6 +14,15 @@ public class StringUtils {
 
     public static int[] getNumbers(String input) {
         int[] numbers = new int[3];
+        numbers[0] = parseInt(input);
         return numbers;
+    }
+
+    private static int parseInt(String input) {
+        try{
+            return Integer.parseInt(input);
+        } catch (NumberFormatException ex) {
+            return 0;
+        }
     }
 }
