@@ -1,11 +1,10 @@
 package com.incubyte;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class StringUtils {
-    /**
-     * Private constructor for utility class
-     */
-    private StringUtils() {
-    }
 
     /**
      * Checks if input string is empty or null
@@ -27,12 +26,17 @@ public class StringUtils {
      * @return parsed numbers
      */
     public static int[] getNumbers(String input) {
-        String[] nums = input.split("[,\n]");
+        ParsedInput parsedInput = parseInputString(input);
+        String[] nums = parsedInput.getNumbers().split(parsedInput.getDelimiter());
         int[] numbers = new int[nums.length];
         for (int i = 0; i < numbers.length; i++) {
             numbers[i] = parseInt(nums[i]);
         }
         return numbers;
+    }
+
+    private static ParsedInput parseInputString(String input) {
+        return null;
     }
 
     /**
