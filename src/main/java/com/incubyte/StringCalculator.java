@@ -24,6 +24,15 @@ class StringCalculator {
      * @return sum
      */
     private int sum(int[] nums) {
+        assertValidInput(nums);
         return Arrays.stream(nums).sum();
+    }
+
+    private void assertValidInput(int[] nums) {
+        int[] negatives = Arrays.stream(nums).filter(x -> x < 0).toArray();
+        if(negatives.length != 0) {
+            String message = String.format("Negative number(s) %s are not supported", Arrays.toString(negatives));
+            throw new UnsupportedOperationException(message);
+        }
     }
 }
