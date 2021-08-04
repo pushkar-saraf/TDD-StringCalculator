@@ -3,6 +3,8 @@ package com.incubyte;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
+import java.util.Arrays;
+
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class StringUtils {
 
@@ -36,11 +38,30 @@ public class StringUtils {
     }
 
     private static ParsedInput parseInputString(String input) {
-        if(!input.startsWith("//")){
+        if (!input.startsWith("//")) {
             return ParsedInput.of("[,\n]", input);
         }
         String[] parts = input.split("\n");
-        return ParsedInput.of( parts[0].substring(2), parts[1]);
+        String delimiters = getDelimiters(parts[0].substring(2));
+        return ParsedInput.of(delimiters, parts[1]);
+    }
+
+    private static String getDelimiters(String input) {
+        String[] delimiters = input.split("]");
+        return Arrays.stream(delimiters).map(str -> str.substring(1))
+                .map(StringUtils::sanitize)
+                .reduce("", (s1, s2) -> s1 + "|" + s2);
+    }
+
+    private static String sanitize(String str) {
+        StringBuilder sb = new StringBuilder();
+        for(char c: str.toCharArray()) {
+            if(c == '*') {
+                sb.append("\\");
+            }
+            sb.append(c);
+        }
+        return sb.toString();
     }
 
     /**
