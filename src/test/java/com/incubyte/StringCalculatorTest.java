@@ -98,4 +98,28 @@ class StringCalculatorTest {
         Assertions.assertEquals(2, stringCalculator.add("1001,2"));
     }
 
+    @Test
+    void givenDelimiterInBrackets_whenAdd_thenSum(){
+        Assertions.assertEquals(
+                3,
+                stringCalculator.add("//[***]\n1***2")
+        );
+    }
+
+    @Test
+    void givenMultipleDelimitersInBrackets_whenAdd_thenSum(){
+        Assertions.assertEquals(
+                6,
+                stringCalculator.add("//[*][%]\n1*2%3")
+        );
+    }
+
+    @Test
+    void givenDelimitersInBrackets_whenAdd_thenSum(){
+        Assertions.assertEquals(
+                6,
+                stringCalculator.add("//[**][%%]\n1**2%%3")
+        );
+    }
+
 }
